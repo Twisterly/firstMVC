@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+
+<div th:each="tobTitle : ${jobTitle}">
+    <a th:href="@{/jobTitle/{id}(id=${jobTitle.getId()})}"
+       th:text="${jobTitle.getJobTitle()}">job title</a>
+</div>
+
+<br/>
+<hr/>
+
+<a href="/employee/new">Create new job title</a>
+
+</body>
+</html>

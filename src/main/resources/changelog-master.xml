@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <changeSet id="1" author="mashafadik@yahoo.com">
+        <sql>
+            CREATE TABLE IF NOT EXISTS job_title (
+            `id` BIGINT(19) PRIMARY KEY AUTO_INCREMENT,
+            `job_title_name` VARCHAR(255)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="2" author="mashafadik@yahoo.com">
+        <sql>
+            CREATE TABLE IF NOT EXISTS employees (
+            `id` BIGINT(19) PRIMARY KEY AUTO_INCREMENT,
+            `first_name` VARCHAR(255),
+            `last_name` VARCHAR(255),
+            `birth_date` DATE,
+            `cell_phone` VARCHAR(45),
+            `job_title_id` BIGINT(19),
+            CONSTRAINT `FK_job_title` FOREIGN KEY(`job_title_id`)
+            REFERENCES job_title(`id`)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="3" author="mashafadik@yahoo.com">
+        <sql>
+            CREATE TABLE IF NOT EXISTS projects (
+            `id` BIGINT(19) PRIMARY KEY AUTO_INCREMENT,
+            `project_name` VARCHAR(45)
+            );
+        </sql>
+    </changeSet>
+
+    <changeSet id="4" author="mashafadik@yahoo.com">
+        <sql>
+            CREATE TABLE IF NOT EXISTS employees_projects (
+            `employeeID` BIGINT(19) NOT NULL,
+            `projectID` BIGINT(19) NOT NULL,
+            PRIMARY KEY (employeeID, projectID),
+            INDEX employeeID (employeeID),
+            INDEX projectID (projectID),
+            CONSTRAINT FK_projects FOREIGN KEY (projectID)
+            REFERENCES projects (id)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE,
+            CONSTRAINT FK_employee FOREIGN KEY (employeeID)
+            REFERENCES employees (id)
+            ON DELETE CASCADE
+            ON UPDATE CASCADE
+            );
+        </sql>
+    </changeSet>
+
+
+</databaseChangeLog>
