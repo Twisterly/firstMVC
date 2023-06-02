@@ -6,9 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Map;
 
@@ -22,12 +20,6 @@ public class EmployeeController {
     public EmployeeController(EmployeeDao employeeDao) {
         this.employeeDAO = employeeDao;
     }
-
-//    @GetMapping()
-//    public ModelAndView index() {
-//        return new ModelAndView("employee_list",
-//                Map.of("employees", employeeDAO.index()));
-//    }
 
     @GetMapping()
     public String index(Model model) {
@@ -62,7 +54,7 @@ public class EmployeeController {
         return "employee/edit_employee";
     }
 
-    @PatchMapping("/{id}")
+    @PostMapping("/{id}")
     public String update(@ModelAttribute("employee") Employee employee, BindingResult bindingResult,
                          @PathVariable("id") Integer id) {
         if (bindingResult.hasErrors())

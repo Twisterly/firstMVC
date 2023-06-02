@@ -4,13 +4,14 @@ public class JobTitle {
 
     public Integer id;
 
-    public String jobTitle;
+   public java.lang.String jobTitleName;
 
     public JobTitle() {
     }
 
-    public JobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
+    public JobTitle(Integer id, java.lang.String jobTitleName) {
+        this.id = id;
+        this.jobTitleName = jobTitleName;
     }
 
     public Integer getId() {
@@ -21,11 +22,11 @@ public class JobTitle {
         this.id = id;
     }
 
-    public String getJobTitle() {
-        return jobTitle;
+    public java.lang.String getJobTitleName() {
+        return jobTitleName;
     }
 
-    public void setJobTitle(String jobTitle) {
-        this.jobTitle = jobTitle;
+    public void setJobTitleName(java.lang.String jobTitleName) {
+        this.jobTitleName = jobTitleName;
     }
 }

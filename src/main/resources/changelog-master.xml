@@ -8,7 +8,7 @@
     <changeSet id="1" author="mashafadik@yahoo.com">
         <sql>
             CREATE TABLE IF NOT EXISTS job_title (
-            `id` BIGINT(19) PRIMARY KEY AUTO_INCREMENT,
+            `job_id` BIGINT(19) PRIMARY KEY AUTO_INCREMENT,
             `job_title_name` VARCHAR(255)
             );
         </sql>
@@ -17,14 +17,14 @@
     <changeSet id="2" author="mashafadik@yahoo.com">
         <sql>
             CREATE TABLE IF NOT EXISTS employees (
-            `id` BIGINT(19) PRIMARY KEY AUTO_INCREMENT,
+            `employee_id` BIGINT(19) PRIMARY KEY AUTO_INCREMENT,
             `first_name` VARCHAR(255),
             `last_name` VARCHAR(255),
             `birth_date` DATE,
             `cell_phone` VARCHAR(45),
             `job_title_id` BIGINT(19),
             CONSTRAINT `FK_job_title` FOREIGN KEY(`job_title_id`)
-            REFERENCES job_title(`id`)
+            REFERENCES job_title(`job_id`)
             ON DELETE CASCADE
             ON UPDATE CASCADE
             );
@@ -34,7 +34,7 @@
     <changeSet id="3" author="mashafadik@yahoo.com">
         <sql>
             CREATE TABLE IF NOT EXISTS projects (
-            `id` BIGINT(19) PRIMARY KEY AUTO_INCREMENT,
+            `project_id` BIGINT(19) PRIMARY KEY AUTO_INCREMENT,
             `project_name` VARCHAR(45)
             );
         </sql>
@@ -49,11 +49,11 @@
             INDEX employeeID (employeeID),
             INDEX projectID (projectID),
             CONSTRAINT FK_projects FOREIGN KEY (projectID)
-            REFERENCES projects (id)
+            REFERENCES projects (project_id)
             ON DELETE CASCADE
             ON UPDATE CASCADE,
             CONSTRAINT FK_employee FOREIGN KEY (employeeID)
-            REFERENCES employees (id)
+            REFERENCES employees (employee_id)
             ON DELETE CASCADE
             ON UPDATE CASCADE
             );

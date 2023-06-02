@@ -1,31 +1,54 @@
 package by.masha.cha.model;
 
 import java.sql.Date;
+import java.util.List;
 
 public class Employee {
 
     public Integer id;
 
-    public String firstName;
+    public java.lang.String firstName;
 
-    public String lastName;
+    public java.lang.String lastName;
 
     public Date birthDate;
 
-    public String cellPhone;
+    public java.lang.String cellPhone;
 
-    public Integer jobId;
+//    public Integer jobId;
+
+    public JobTitle jobTitle;
+
+    public List<java.lang.String> projects;
+
 
     public Employee() {
     }
 
-    public Employee(String firstName, String lastName, Date birthDate,
-                    String cellPhone, Integer jobId) {
+
+
+    public Employee(Integer id, java.lang.String firstName,
+                    java.lang.String lastName, Date birthDate,
+                    java.lang.String cellPhone, JobTitle jobTitle,
+                    List<java.lang.String> projects) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
         this.cellPhone = cellPhone;
-        this.jobId = jobId;
+        this.jobTitle = jobTitle;
+        this.projects = projects;
+    }
+
+    public Employee(Integer id, java.lang.String firstName,
+                    java.lang.String lastName, Date birthDate,
+                    java.lang.String cellPhone, JobTitle jobTitle) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+        this.cellPhone = cellPhone;
+        this.jobTitle = jobTitle;
     }
 
     public Integer getId() {
@@ -36,19 +59,19 @@ public class Employee {
         this.id = id;
     }
 
-    public String getFirstName() {
+    public java.lang.String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstName) {
+    public void setFirstName(java.lang.String firstName) {
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    public java.lang.String getLastName() {
         return lastName;
     }
 
-    public void setLastName(String lastName) {
+    public void setLastName(java.lang.String lastName) {
         this.lastName = lastName;
     }
 
@@ -60,19 +83,27 @@ public class Employee {
         this.birthDate = birthDate;
     }
 
-    public String getCellPhone() {
+    public java.lang.String getCellPhone() {
         return cellPhone;
     }
 
-    public void setCellPhone(String cellPhone) {
+    public void setCellPhone(java.lang.String cellPhone) {
         this.cellPhone = cellPhone;
     }
 
-    public Integer getJobId() {
-        return jobId;
+    public JobTitle getJobTitle() {
+        return jobTitle;
     }
 
-    public void setJobId(Integer jobId) {
-        this.jobId = jobId;
+    public void setJobTitle(JobTitle jobTitle) {
+        this.jobTitle = jobTitle;
+    }
+
+    public List<java.lang.String> getProjects() {
+        return projects;
+    }
+
+    public void setProjects(List<java.lang.String> projects) {
+        this.projects = projects;
     }
 }
