@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New job title</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/jobTitle}" th:object="${jobTitle}">
+    <label for="id">Enter id: </label>
+    <input type="text" th:field="*{id}" id="id"/>
+    <div style="color:red" th:if="${#fields.hasErrors('id')}" th:errors="*{id}">id Error</div>
+    <br/>
+    <label for="jobTitle">Enter job title: </label>
+    <input type="text" th:field="*{jobTitle}" id="jobTitle"/>
+    <div style="color:red" th:if="${#fields.hasErrors('jobTitle')}" th:errors="*{jobTitle}">job title Error</div>
+    <br/>
+    <input type="submit" value="Create!"/>
+</form>
+
+</body>
+</html>
